@@ -6,7 +6,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { fetchRandomVerifiableObservations, fetchTaxonDetails, INatObservation } from '@/src/fetch_inat';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
 
 type GameType = 'plants' | 'fungi' | 'both';
 type RankKey = 'order' | 'family' | 'genus' | 'species';
@@ -99,7 +99,7 @@ function bestPhotoUrl(item: INatObservation['photos'][number]): string {
   return '';
 }
 
-export default function GameScreen() {
+function GameScreen() {
   const searchParams = useSearchParams();
   const gameType = useMemo(() => {
     const val = searchParams.get('gameType');
@@ -593,5 +593,13 @@ export default function GameScreen() {
       `}</style>
       </div>
     </div>
+  );
+}
+
+export default function GamePage() {
+  return (
+    <Suspense fallback={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>Loading...</div>}>
+      <GameScreen />
+    </Suspense>
   );
 }

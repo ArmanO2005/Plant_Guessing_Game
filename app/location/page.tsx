@@ -4,7 +4,7 @@ import LocationSearch, { LocationEntry } from '@/components/LocationSearch';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useMemo, useState } from 'react';
+import React, { Suspense, useMemo, useState } from 'react';
 
 type GameType = 'plants' | 'fungi' | 'both';
 
@@ -13,7 +13,7 @@ function normalizeGameType(value: string | null): GameType {
   return 'both';
 }
 
-export default function LocationScreen() {
+function LocationScreen() {
   const searchParams = useSearchParams();
   const gameType = useMemo(() => normalizeGameType(searchParams.get('gameType')), [searchParams]);
   const router = useRouter();
@@ -99,5 +99,13 @@ export default function LocationScreen() {
           Start game
         </span>
       </button>      </div>    </div>
+  );
+}
+
+export default function LocationPage() {
+  return (
+    <Suspense fallback={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>Loading...</div>}>
+      <LocationScreen />
+    </Suspense>
   );
 }
