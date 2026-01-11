@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   basePath: "/Plant_Guessing_Game",
+  assetPrefix: "/Plant_Guessing_Game/",
   trailingSlash: true,
   images: {
     unoptimized: true,
