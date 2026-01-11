@@ -9,9 +9,9 @@ import React from 'react';
 type GameType = 'plants' | 'fungi' | 'both';
 
 const options: Array<{ label: string; value: GameType; description: string; icon: string }> = [
-  { label: 'Plants', value: 'plants', description: 'Predominantly photosynthetic organisms that comprise the kingdom Plantae.', icon: '/plant_icon.png' },
-  { label: 'Fungi', value: 'fungi', description: 'The kingdom of eukaryotic organisms that includes mushrooms, lichens, molds, rusts, and yeasts.', icon: '/fungi_icon.png' },
-  { label: 'Both', value: 'both', description: 'Guess on both plants and fungi.', icon: '/both.png' },
+  { label: 'Plants', value: 'plants', description: 'Predominantly photosynthetic organisms that comprise the kingdom Plantae.', icon: '/Plant_Guessing_Game/plant_icon.png' },
+  { label: 'Fungi', value: 'fungi', description: 'The kingdom of eukaryotic organisms that includes mushrooms, lichens, molds, rusts, and yeasts.', icon: '/Plant_Guessing_Game/fungi_icon.png' },
+  { label: 'Both', value: 'both', description: 'Guess on both plants and fungi.', icon: '/Plant_Guessing_Game/both.png' },
 ];
 
 export default function GameTypeScreen() {
